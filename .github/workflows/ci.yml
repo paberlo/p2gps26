@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Descargar el código del repositorio
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
  
       - name: Instalar Java 21 (Temurin) y cache de Maven
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
           java-version: '21'
@@ -25,7 +25,7 @@ jobs:
         run: mvn -B verify
  
       - name: Publicar el .jar como artefacto de la ejecucion
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: app-jar
           path: target/app.jar
