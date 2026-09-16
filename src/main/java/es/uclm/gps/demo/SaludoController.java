@@ -20,7 +20,7 @@ public class SaludoController {
     /** Comprobacion de salud: util para saber si el servicio esta vivo. */
     @GetMapping("/api/health")
     public Map<String, String> health() {
-        return Map.of("status", "KKO");
+        return Map.of("status", "OK");
     }
 
     /** Devuelve la version actual desplegada. */
