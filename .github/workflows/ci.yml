@@ -1,0 +1,31 @@
+name: CI
+ 
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:      # permite lanzarlo a mano desde la pestaña Actions
+ 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el código del repositorio
+        uses: actions/checkout@v4
+ 
+      - name: Instalar Java 21 (Temurin) y cache de Maven
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+          cache: maven
+ 
+      - name: Compilar y ejecutar los tests
+        run: mvn -B verify
+ 
+      - name: Publicar el .jar como artefacto de la ejecucion
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-jar
+          path: target/app.jar
