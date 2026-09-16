@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parts Unlimited - GPS UCLM</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { font-family: system-ui, Arial, sans-serif; margin: 0; background: #f5f6f8; color: #1a1a1a; }
+    header { background: #0b5394; color: #fff; padding: 24px 32px; }
+    header h1 { margin: 0 0 4px; font-size: 24px; }
+    header p { margin: 0; opacity: .85; }
+    main { max-width: 720px; margin: 32px auto; padding: 0 16px; }
+    table { width: 100%; border-collapse: collapse; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.1); }
+    th, td { text-align: left; padding: 12px 16px; border-bottom: 1px solid #e5e7eb; }
+    th { background: #eef2f7; }
+    td.precio { text-align: right; font-variant-numeric: tabular-nums; }
+    footer { text-align: center; color: #6b7280; margin: 40px 0; font-size: 14px; }
+    .badge { display:inline-block; background:#e8f0fe; color:#0b5394; padding:2px 10px; border-radius:12px; font-size:13px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Parts Unlimited &mdash; Catalogo</h1>
+    <!-- EDITA ESTA LINEA para ver como tu cambio llega solo hasta produccion -->
+    <p>A Fabrikam Subsidiary</p>
+  </header>
+
+  <main>
+    <p><span class="badge">Version 1.0</span> Aplicacion de ejemplo para la practica de CI/CD.</p>
+    <table>
+      <thead>
+        <tr><th>#</th><th>Pieza</th><th class="precio">Precio</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Bujia</td><td class="precio">4,50 &euro;</td></tr>
+        <tr><td>2</td><td>Filtro de aceite</td><td class="precio">9,90 &euro;</td></tr>
+        <tr><td>3</td><td>Pastillas de freno</td><td class="precio">24,00 &euro;</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:20px">Prueba tambien los endpoints:
+      <a href="/api/health">/api/health</a> &middot;
+      <a href="/api/version">/api/version</a> &middot;
+      <a href="/api/catalogo">/api/catalogo</a>
+    </p>
+  </main>
+
+  <footer>Gestion de Proyectos Software &middot; ESIIAB &middot; UCLM</footer>
+</body>
+</html>
