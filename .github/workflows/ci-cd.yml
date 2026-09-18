@@ -1,0 +1,47 @@
+name: CI
+ 
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:      # permite lanzarlo a mano desde la pestaña Actions
+ 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el código del repositorio
+        uses: actions/checkout@v5
+ 
+      - name: Instalar Java 21 (Temurin) y cache de Maven
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+          cache: maven
+ 
+      - name: Compilar y ejecutar los tests
+        run: mvn -B verify
+ 
+      - name: Publicar el .jar como artefacto de la ejecucion
+        uses: actions/upload-artifact@v6
+        with:
+          name: app-jar
+          path: target/app.jar
+# ---------- Despliegue Continuo (nuevo en la 2b) ----------
+  deploy:
+    needs: build            # solo despliega si la CI paso en verde
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el .jar del job build
+        uses: actions/download-artifact@v6
+        with:
+          name: app-jar
+ 
+      - name: Desplegar en Azure App Service
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: p2gps26    # p.ej. p2gps-idunico
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: app.jar
