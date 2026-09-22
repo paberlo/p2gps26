@@ -42,6 +42,6 @@ jobs:
       - name: Desplegar en Azure App Service
         uses: azure/webapps-deploy@v3
         with:
-          app-name: p2gps26    # p.ej. p2gps-idunico
+          app-name: p2gps27    # p.ej. p2gps-idunico
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: app.jar
